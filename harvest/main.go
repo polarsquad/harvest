@@ -3,9 +3,11 @@ package harvest
 import (
 	// "fmt"
 
+	"./config"
 	"./structs"
 )
 
+// Harvest creates the struct for the API, User and Entries
 type Harvest struct {
 	API     *structs.API
 	User    *structs.User
@@ -14,10 +16,10 @@ type Harvest struct {
 }
 
 // Init methot initializes the data structure needed for Harvest
-func Init(authToken string, accountID string) *Harvest {
+func Init(conf *config.Config) *Harvest {
 	a := &structs.API{
-		AuthToken: authToken,
-		AccountID: accountID,
+		AuthToken: conf.API.AuthToken,
+		AccountID: conf.API.AccountID,
 	}
 
 	e := &[]structs.TimeEntries{}

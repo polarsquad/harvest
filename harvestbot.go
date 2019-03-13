@@ -7,16 +7,14 @@ import (
 	// "encoding/json"
 
 	"./harvest"
+	"./harvest/config"
 )
 
-// There needs to moved to config.json file ASAP
-var authToken = ""
-var accountId = ""
-
 func main() {
-	h := harvest.Init(authToken, accountId)
-	// h.Api.AuthToken = authToken
-	// h.Api.AccountId = accountId
+	configFile := "config.json"
+	c := config.LoadConfig(configFile)
+
+	h := harvest.Init(c)
 
 	user, err := h.GetUser()
 	if err != nil {
