@@ -10,6 +10,7 @@ import (
 	"./structs"
 )
 
+// GetUser Fetches the information of the logged in user
 func (h *Harvest) GetUser() (*structs.User, error) {
 
 	url := "https://api.harvestapp.com/v2/users/me"
