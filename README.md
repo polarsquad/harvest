@@ -10,6 +10,9 @@ package main
 import "./harvest"`
 
 func main() {
-    h := harvest.Init(authToken, accountId)
+    configFile := "config.json"
+    c := config.LoadConfig(configFile)
+    
+    h := harvest.Init(configFile)
 }
 ```
