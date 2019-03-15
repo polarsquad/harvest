@@ -1,5 +1,7 @@
 package harvest
 
+const VERSION = "V0.1"
+
 import (
 	// "fmt"
 
