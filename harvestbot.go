@@ -6,8 +6,8 @@ import (
 	// "net/http"
 	// "encoding/json"
 
-	"github.com/polarsquad/harvest/harvest"
-	"github.com/polarsquad/harvest/harvest/config"
+	"github.com/polarsquad/harvestbot/harvest"
+	"github.com/polarsquad/harvestbot/harvest/config"
 )
 
 func main() {
