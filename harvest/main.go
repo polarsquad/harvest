@@ -7,7 +7,7 @@ import (
 	"github.com/polarsquad/harvestbot/harvest/structs"
 )
 
-// VERSION 0.1
+// VERSION v0.0.1
 const VERSION = "v0.0.1"
 
 // Harvest creates the struct for the API, User and Entries
