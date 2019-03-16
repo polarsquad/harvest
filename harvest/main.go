@@ -1,13 +1,13 @@
 package harvest
 
-const VERSION = "V0.1"
-
 import (
 	// "fmt"
 
-	"./config"
-	"./structs"
+	"github.com/polarsquad/harvest/harvest/config"
+	"github.com/polarsquad/harvest/harvest/structs"
 )
+
+const VERSION = "V0.1"
 
 // Harvest creates the struct for the API, User and Entries
 type Harvest struct {

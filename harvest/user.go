@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	"./structs"
+	"github.com/polarsquad/harvest/harvest/structs"
 )
 
 // GetUser Fetches the information of the logged in user
