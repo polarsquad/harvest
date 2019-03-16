@@ -1,1 +1,1 @@
-module harvestbot/harvest/struct
+module harvest/struct

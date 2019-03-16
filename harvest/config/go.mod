@@ -1,1 +1,1 @@
-module harvestbot/harvest/config
+module harvest/config

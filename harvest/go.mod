@@ -1,1 +1,1 @@
-module harvestbot/harvest
+module harvest
