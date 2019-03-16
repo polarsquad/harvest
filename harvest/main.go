@@ -8,7 +8,7 @@ import (
 )
 
 // VERSION 0.1
-const VERSION = "V0.1"
+const VERSION = "v0.0.1"
 
 // Harvest creates the struct for the API, User and Entries
 type Harvest struct {
