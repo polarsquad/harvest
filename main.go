@@ -3,8 +3,8 @@ package harvest
 import (
 	// "fmt"
 
-	"github.com/polarsquad/harvestbot/harvest/config"
-	"github.com/polarsquad/harvestbot/harvest/structs"
+	"github.com/polarsquad/harvest/config"
+	"github.com/polarsquad/harvest/structs"
 )
 
 // VERSION v0.0.1
