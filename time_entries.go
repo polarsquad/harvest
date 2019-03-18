@@ -2,7 +2,7 @@ package harvest
 
 import (
 	"fmt"
-	// "log"
+	"log"
 
 	"encoding/json"
 	"io/ioutil"
@@ -143,7 +143,7 @@ func (e Entries) dayTotal() float64 {
 	return hours
 }
 
-func (h *Harvest) GetHours(u structs.User) {
+func (h *Harvest) GetHours(u *User) {
 	// url := "https://api.harvestapp.com/v2/time_entries?from=2019-02-20"
 	url := "https://api.harvestapp.com/v2/time_entries"
 	// Client := &http.Client{}
@@ -161,7 +161,7 @@ func (h *Harvest) GetHours(u structs.User) {
 	// fmt.Printf("OPTS: %v", params)
 
 	urlWithParams, _ := addParamsToURL(url, &params)
-	fmt.Printf("URL: %v\n", urlWithParams)
+	log.Printf("URL: %v\n", urlWithParams)
 
 	// req, _ := http.NewRequest("GET", urlWithParams, nil)
 	// req.Header.Set("User-Agent", "Go Harvest API Sample")
@@ -177,9 +177,9 @@ func (h *Harvest) GetHours(u structs.User) {
 	var times TimeEntries
 
 	json.Unmarshal(body, &times)
-	fmt.Printf("TOTAL ENTRIES: %v\n", times.TotalEntries)
-	fmt.Printf("TOTAL PAGES: %v\n", times.TotalPages)
-	fmt.Printf("START ENTRIES: %v\n", len(times.Entries))
+	log.Printf("TOTAL ENTRIES: %v\n", times.TotalEntries)
+	log.Printf("TOTAL PAGES: %v\n", times.TotalPages)
+	log.Printf("START ENTRIES: %v\n", len(times.Entries))
 
 	// var allEntries []structs.Entries
 	var allEntries []structs.Entries
@@ -187,14 +187,14 @@ func (h *Harvest) GetHours(u structs.User) {
 	i := 1
 	// getAll := times.Links.getAllEntries(&allEntries, i)
 	getAll := h.getAllEntries(times.Links, &allEntries, i) // TODO: CHANGE REFERENCING
-	fmt.Printf("getAll: %v\n", len(getAll))
+	log.Printf("getAll: %v\n", len(getAll))
 	for _, v := range getAll {
 		allEntries = append(allEntries, v)
 	}
 	for _, v := range times.Entries {
 		allEntries = append(allEntries, v)
 	}
-	fmt.Printf("ALLENTRIES LEN: %v\n", len(allEntries))
+	log.Printf("ALLENTRIES LEN: %v\n", len(allEntries))
 
 	// for _, v := range times.Entries {
 	// 	// fmt.Printf("ORIG DATE: %v\n", v.SpentDate)
@@ -204,7 +204,7 @@ func (h *Harvest) GetHours(u structs.User) {
 	// }
 
 	times.Entries = []structs.Entries(allEntries)
-	fmt.Printf("Total Hours: %v\n", times.totalHours())
+	log.Printf("Total Hours: %v\n", times.totalHours())
 	day := "2019-02-20"
-	fmt.Printf("Hours on date %s: %v", day, times.dailyHours(day))
+	log.Printf("Hours on date %s: %v", day, times.dailyHours(day))
 }
