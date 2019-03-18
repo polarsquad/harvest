@@ -143,7 +143,7 @@ func (e Entries) dayTotal() float64 {
 	return hours
 }
 
-func (h *Harvest) GetHours(u *User) {
+func (h *Harvest) GetHours(u *User) float64 {
 	// url := "https://api.harvestapp.com/v2/time_entries?from=2019-02-20"
 	url := "https://api.harvestapp.com/v2/time_entries"
 	// Client := &http.Client{}
@@ -207,4 +207,6 @@ func (h *Harvest) GetHours(u *User) {
 	log.Printf("Total Hours: %v\n", times.totalHours())
 	day := "2019-02-20"
 	log.Printf("Hours on date %s: %v", day, times.dailyHours(day))
+
+	return times.totalHours()
 }
