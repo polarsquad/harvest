@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	"log"
 	"os"
 
 	"encoding/json"
@@ -27,7 +27,7 @@ func LoadConfig(file string) *Config {
 	configFile, err := os.Open(file)
 	defer configFile.Close()
 	if err != nil {
-		fmt.Printf("OPEN FILE ERROR: %v\n", err.Error())
+		log.Printf("OPEN FILE ERROR: %v\n", err.Error())
 		return c
 	}
 

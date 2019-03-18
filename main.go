@@ -12,10 +12,32 @@ const VERSION = "v0.0.2"
 
 // Harvest creates the struct for the API, User and Entries
 type Harvest struct {
-	API     *structs.API
-	User    *structs.User
-	Project string
-	Entries *[]structs.TimeEntries
+	API         *structs.API
+	User        *User
+	Project     string
+	TimeEntries *TimeEntries
+}
+
+type TimeEntries structs.TimeEntries
+
+type Entries []structs.Entries
+
+// User ...
+type User structs.User
+
+// Links ...
+type Links structs.Links
+
+// GetTimeEntriesParams ...
+type GetTimeEntriesParams struct {
+	From   string `url:"from"`
+	To     string `url:"to"`
+	UserID int64  `url:"user_id"`
+	// ClientID  string `url:"client_id"`
+	// ProjectID string `url:"project_id"`
+	// IsBilled  bool   `url:"is_billed"`
+	// Page      int16  `url:"page"`
+	PerPage int8 `url:"per_page"`
 }
 
 // Init methot initializes the data structure needed for Harvest
@@ -25,13 +47,13 @@ func Init(conf *config.Config) *Harvest {
 		AccountID: conf.API.AccountID,
 	}
 
-	e := &[]structs.TimeEntries{}
+	e := &TimeEntries{}
 
-	h := &Harvest{
-		API:     a,
-		User:    &structs.User{},
-		Project: "",
-		Entries: e,
+	H := &Harvest{
+		API:         a,
+		User:        &User{},
+		Project:     "",
+		TimeEntries: e,
 	}
 	// h := &Harvest{
 	// 	User:     "Mika",
@@ -39,5 +61,5 @@ func Init(conf *config.Config) *Harvest {
 	// 	Entries:  []TimeEntries{},
 	// }
 
-	return h
+	return H
 }

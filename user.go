@@ -6,12 +6,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-
-	"github.com/polarsquad/harvest/structs"
+	// "github.com/polarsquad/harvest/structs"
 )
 
 // GetUser Fetches the information of the logged in user
-func (h *Harvest) GetUser() (*structs.User, error) {
+func (h *Harvest) GetUser() (*User, error) {
 
 	url := "https://api.harvestapp.com/v2/users/me"
 	// url := "https://api.harvestapp.com/v2/company"
@@ -39,7 +38,8 @@ func (h *Harvest) GetUser() (*structs.User, error) {
 	// }
 
 	// var jsonResponse map[string]interface{}
-	var user structs.User
+	// var user structs.User
+	var user User
 
 	// json.Unmarshal(body, &jsonResponse)
 	json.Unmarshal(body, &user)
