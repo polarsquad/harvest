@@ -18,6 +18,8 @@ type Harvest struct {
 	TimeEntries *TimeEntries
 }
 
+type api structs.API
+
 type TimeEntries structs.TimeEntries
 
 type Entries []structs.Entries
@@ -40,6 +42,8 @@ type GetTimeEntriesParams struct {
 	PerPage int8 `url:"per_page"`
 }
 
+type API structs.API
+
 // Init methot initializes the data structure needed for Harvest
 func Init(conf *config.Config) *Harvest {
 	a := &structs.API{
@@ -55,6 +59,10 @@ func Init(conf *config.Config) *Harvest {
 		Project:     "",
 		TimeEntries: e,
 	}
+
+	// API.AccountID = conf.API.AccountID
+	// API.AuthToken = conf.API.AuthToken
+	// API.BaseURL = conf.API.BaseURL
 	// h := &Harvest{
 	// 	User:     "Mika",
 	// 	Projects: "Client",
