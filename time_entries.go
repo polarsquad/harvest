@@ -90,9 +90,8 @@ func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries 
 	urlWithParams, _ := addParamsToURL(url, &params)
 	body, err := h.getURL("GET", urlWithParams)
 	if err != nil {
-		log.Fatalln(err.Error)
+		log.Fatalln(err.Error())
 	}
-	fmt.Printf("%v", string(body))
 
 	var times TimeEntries
 	json.Unmarshal(body, &times)
@@ -173,9 +172,9 @@ func (h *Harvest) getAllEntries(l structs.Links, entries *[]structs.Entries, i i
 // 	return hours
 // }
 
-func TotalHours(e *TimeEntries) float64 {
+func (h *Harvest) TotalHours() float64 {
 	var hours float64
-	for _, v := range e.Entries {
+	for _, v := range h.TimeEntries.Entries {
 		hours = hours + v.Hours
 	}
 	// fmt.Printf("Total hours: %v\n", hours)
