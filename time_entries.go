@@ -1,7 +1,7 @@
 package harvest
 
 import (
-	"fmt"
+	// "fmt"
 	"log"
 
 	"encoding/json"
@@ -69,10 +69,10 @@ func (h *Harvest) getURL(method string, url string) ([]byte, error) {
 	return body, err
 }
 
-func getAllEntries(l *structs.Links) *TimeEntries {
+// func getAllEntries(l *structs.Links) *TimeEntries {
 
-	return nil
-}
+// 	return nil
+// }
 
 func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries {
 	// Start with fetching the entries
@@ -82,7 +82,7 @@ func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries 
 	params := GetTimeEntriesParams{
 		UserID:  int64(u.ID),
 		From:    from.Format("2006-01-02"),
-		PerPage: 100,
+		PerPage: 10,
 		// IsBilled: true,
 		To: to.Format("2006-01-02"),
 	}
@@ -95,72 +95,36 @@ func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries 
 
 	var times TimeEntries
 	json.Unmarshal(body, &times)
+	log.Printf("TotalEntries: %v, Pages: %v\n", times.TotalEntries, times.TotalPages)
+
 	// IF: returned entries have Next link, then we fetch the additional pages
 	if times.Links.Next != "" {
 		// Then call getAllEntries
-		// getAllEntries(&times.Links)
+		// time.Sleep(1 * time.Second) // This might be needed, if Harvest API starts throttling
+		entries := h.getAllEntries(times.Links)
+		times.Entries = append(times.Entries, entries...)
+
 	}
 
 	return &times
 }
 
-func (h *Harvest) getAllEntries(l structs.Links, entries *[]structs.Entries, i int) []structs.Entries {
-	fmt.Println("---- START ----")
-	fmt.Printf("entries: %v\n", len(*entries))
-	fmt.Printf("NEXT LINK: %v\n", l.Next)
-	// i++
-	// entry := *entries
-	var entry []structs.Entries
-	// var entr Entries
-	var times structs.TimeEntries
+// func (h *Harvest) getAllEntries(l structs.Links, entries *[]structs.Entries, i int) Entries {
+func (h *Harvest) getAllEntries(l structs.Links) Entries {
+	// getURL to fetch additional Entries from Links.Next URL
 	body, _ := h.getURL("GET", l.Next)
+	var times TimeEntries
 	json.Unmarshal(body, &times)
 	if times.Links.Next != "" {
-		fmt.Printf("    IF ENTRIES: %v\n", len(times.Entries))
-		// body, _ := getURL("GET", times.Links.Next)
-		// json.Unmarshal(body, &times)
-		i++
-		entry = []structs.Entries(h.getAllEntries(l, &entry, i))
-		for _, v := range times.Entries {
-			entry = append(entry, v)
-		}
+		// IF Next URL still available, let's call getAllEntries() again.
+		entries := h.getAllEntries(times.Links)
+		times.Entries = append(times.Entries, entries...)
 	} else {
-		fmt.Printf("    ELSE ENTRIES (%v): %v\n", i, len(times.Entries))
-		for _, v := range times.Entries {
-			entry = append(entry, v)
-		}
-		for _, v := range *entries {
-			entry = append(entry, v)
-		}
-		fmt.Printf("(%v)ENTRY LEN: %v\n", i, len(entry))
-		i--
-		return entry
+		// Return times.Entries since no Links.Next URL available
+		return times.Entries
 	}
-	// i--
-	fmt.Printf("(%v) RIGHT AFTER IF: %v\n", i, len(entry))
-	// ** THIS IS ORIGINAL FUNCTIONING...partially
-	// if l.Next != "" {
-	// 	body, _ := getURL("GET", l.Next)
-	// 	json.Unmarshal(body, &times)
-	// 	entry = []Entries(times.Links.getAllEntries(&entry))
-	// } else {
-	// 	body, _ := getURL("GET", l.Next)
-	// 	json.Unmarshal(body, &times)
-	// 	entry = []Entries(times.Links.getAllEntries(&entry))
-	// }
 
-	for _, v := range *entries {
-
-		entry = append(entry, v)
-	}
-	fmt.Printf("(%v) ENTRY LEN: %v\n", i, len(entry))
-	// entry = append(entry, times.Entries)
-	// entry = []Entries(times.Entries)
-	fmt.Printf("NEXT: %v\n", l.Next)
-	// fmt.Printf("Entries: %v\n", len(times.Entries))
-	fmt.Println("---- END ----")
-	i--
-	return entry
+	return times.Entries
 }
 
 // func (e *structs.TimeEntries) totalHours() float64 {
