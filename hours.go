@@ -1,9 +1,15 @@
 package harvest
 
 import (
-	// "log"
+	_ "log"
 	"time"
 )
+
+// GetOvertime counts overtime hours from TimeEntries, using also dayTotal function as a helper.
+func (e *TimeEntries) GetOvertime(from time.Time, to time.Time) {
+
+	return
+}
 
 // TotalHours counts total logged hours from the TimeEntries struct
 func (h *Harvest) TotalHours() float64 {
@@ -15,38 +21,21 @@ func (h *Harvest) TotalHours() float64 {
 	return hours
 }
 
-// GetOvertime counts overtime hours from TimeEntries, using also dayTotal function as a helper.
-func (e *TimeEntries) GetOvertime(from time.Time, to time.Time) {
-
-	return
-}
-
 // DailyHours counts total logged in hours for selected date.
-// Needs daySelector(time.Time) as parameter for selected day.
+// Needs daySelector(time.Time) as parameter for selected date.
 func (e *TimeEntries) DailyHours(daySelector time.Time) float64 {
 	var selection Entries
 
-	day, _ := time.Parse("2006-01-02", daySelector.String())
-
-	for i := 0; i < len(e.Entries); i++ {
-		if e.Entries[i].SpentDate == day.String() {
-			selection = append(selection, e.Entries[i])
-		}
-	}
+	date := daySelector.Format("2006-01-02")
 
 	for _, v := range e.Entries {
-		if v.SpentDate == day.String() {
+		if v.SpentDate == date {
 			selection = append(selection, v)
 		}
 	}
 
 	dayHours := selection.dayTotal()
 
-	// for _, v := range e.Entries {
-	// 	if v.SpentDate == daySelector {
-	// 		dayHours = dayHours + v.Hours
-	// 	}
-	// }
 	return dayHours
 }
 
@@ -58,7 +47,7 @@ func (e Entries) dayTotal() float64 {
 	return hours
 }
 
-// isWorkday functions as a helper function, to determine if selected day is workday or not.
+// isWorkday functions as a helper function, to determine if selected date is workday or not.
 func isWorkday(date time.Time) bool { // Should this be placed in helpers.go?
 	if date.Weekday().String() != "Saturday" && date.Weekday().String() != "Sunday" {
 		return true
