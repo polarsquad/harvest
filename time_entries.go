@@ -114,7 +114,6 @@ func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries 
 // func (h *Harvest) getAllEntries(l structs.Links, entries *[]structs.Entries, i int) Entries {
 func (h *Harvest) getAllEntries(l structs.Links) Entries {
 	// getURL to fetch additional Entries from Links.Next URL
-	log.Printf("Fetching URL: %s", l.Next)
 	body, _ := h.getURL("GET", l.Next)
 	var times TimeEntries
 	json.Unmarshal(body, &times)
