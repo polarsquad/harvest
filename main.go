@@ -18,11 +18,15 @@ type Harvest struct {
 	TimeEntries *TimeEntries
 }
 
-type api structs.API
+// type api structs.API
 
+// TimeEntries ...
 type TimeEntries structs.TimeEntries
 
+// Entries ...
 type Entries []structs.Entries
+
+// type entries structs.Entries
 
 // User ...
 type User structs.User
