@@ -67,8 +67,6 @@ func isWorkday(date time.Time) bool { // Should this be placed in helpers.go?
 	return false
 }
 
-type entries structs.Entries
-
 // Filter is generic function to filter Entries
 func (e *TimeEntries) Filter(f func(structs.Entries) bool) (ret []structs.Entries) {
 	// var r []structs.Entries
