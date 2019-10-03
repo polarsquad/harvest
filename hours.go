@@ -53,10 +53,10 @@ func (e TimeEntries) Total() float64 {
 
 // DailyTotals counts total logged in hours for selected date.
 // Needs daySelector(time.Time) as parameter for selected date.
-// Will outout hours, saldo and overtime.
-// Hours is logged hours excluding spent flexitime
-// Saldo is spent flexitime for that day
-// Overtime is overtime for that day
+// Will output hours, saldo and overtime.
+// Hours is logged hours excluding spent flexitime.
+// Saldo is spent flexitime for that day.
+// Overtime is overtime for that day.
 func (e *TimeEntries) DailyTotals(daySelector time.Time) (hours float64, saldo float64, overtime float64) {
 	// var selection Entries
 	// var saldoused = false
