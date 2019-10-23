@@ -7,8 +7,27 @@ import (
 )
 
 // GetOvertime counts overtime hours from TimeEntries, using also dayTotal function as a helper.
-func (e *TimeEntries) GetOvertime(from time.Time, to time.Time) {
+func (e *TimeEntries) GetOvertime(from time.Time, to time.Time) (totalOvertime float64) {
+	for d := from; d.Before(to) || d.Equal(to); d = d.AddDate(0, 0, 1) {
+		// dailyHours := e.DailyHours(d)
+		_, saldo, overtime := e.DailyTotals(d)
 
+		totalOvertime = totalOvertime + overtime
+		if saldo != 0 {
+			totalOvertime = totalOvertime - saldo
+		}
+
+		// if IsWorkday(d) {
+		// 	if dailyHours > 7.5 {
+		// 		overtime = overtime + dailyHours - 7.5
+		// 	}
+		// 	if dailyHours < 7.5 {
+		// 		overtime = overtime + dailyHours - 7.5
+		// 	}
+		// } else {
+		// 	overtime = overtime + dailyHours
+		// }
+	}
 	return
 }
 
@@ -30,6 +49,42 @@ func (e TimeEntries) Total() float64 {
 	}
 	// fmt.Printf("Total hours: %v\n", hours)
 	return hours
+}
+
+// DailyTotals counts total logged in hours for selected date.
+// Needs daySelector(time.Time) as parameter for selected date.
+// Will output hours, saldo and overtime.
+// Hours is logged hours excluding spent flexitime.
+// Saldo is spent flexitime for that day.
+// Overtime is overtime for that day.
+func (e *TimeEntries) DailyTotals(daySelector time.Time) (hours float64, saldo float64, overtime float64) {
+	// var selection Entries
+
+	date := daySelector.Format("2006-01-02") // TODO: Switch to get formatter from config
+
+	for _, v := range e.Entries {
+		if v.SpentDate == date {
+			// selection = append(selection, v)
+			if IsWorkday(daySelector) {
+				if v.Task.Id == 8814697 { // TODO: Switch to use variable from config.
+					saldo = saldo + v.Hours
+				} else {
+					hours = hours + v.Hours
+				}
+
+			} else {
+				hours = v.Hours
+				overtime = v.Hours
+			}
+		}
+	}
+	if IsWorkday(daySelector) {
+		if hours+saldo != 7.5 {
+			// Calculate if the day full 7.5 hours, even if saldo using saldos.
+			overtime = (hours + saldo) - 7.5
+		}
+	}
+	return
 }
 
 // DailyHours counts total logged in hours for selected date.
@@ -58,8 +113,8 @@ func (e Entries) dayTotal() float64 {
 	return hours
 }
 
-// isWorkday functions as a helper function, to determine if selected date is workday or not.
-func isWorkday(date time.Time) bool { // Should this be placed in helpers.go?
+// IsWorkday functions as a helper function, to determine if selected date is workday or not.
+func IsWorkday(date time.Time) bool { // Should this be placed in helpers.go?
 	if date.Weekday().String() != "Saturday" && date.Weekday().String() != "Sunday" {
 		return true
 	}
