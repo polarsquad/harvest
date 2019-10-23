@@ -59,7 +59,6 @@ func (e TimeEntries) Total() float64 {
 // Overtime is overtime for that day.
 func (e *TimeEntries) DailyTotals(daySelector time.Time) (hours float64, saldo float64, overtime float64) {
 	// var selection Entries
-	// var saldoused = false
 
 	date := daySelector.Format("2006-01-02") // TODO: Switch to get formatter from config
 
@@ -68,13 +67,11 @@ func (e *TimeEntries) DailyTotals(daySelector time.Time) (hours float64, saldo f
 			// selection = append(selection, v)
 			if IsWorkday(daySelector) {
 				if v.Task.Id == 8814697 { // TODO: Switch to use variable from config.
-					// saldoused = true
 					saldo = saldo + v.Hours
 				} else {
 					hours = hours + v.Hours
 				}
 
-				// Calculate is the day full 7.5 hours, even if saldo using saldos.
 			} else {
 				hours = v.Hours
 				overtime = v.Hours
@@ -83,6 +80,7 @@ func (e *TimeEntries) DailyTotals(daySelector time.Time) (hours float64, saldo f
 	}
 	if IsWorkday(daySelector) {
 		if hours+saldo != 7.5 {
+			// Calculate if the day full 7.5 hours, even if saldo using saldos.
 			overtime = (hours + saldo) - 7.5
 		}
 	}
