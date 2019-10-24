@@ -5,69 +5,11 @@ import (
 	"log"
 
 	"encoding/json"
-	"io/ioutil"
-	"net/http"
-	"net/url"
 	"time"
 
-	"github.com/google/go-querystring/query"
+	// "github.com/google/go-querystring/query"
 	"github.com/polarsquad/harvest/structs"
 )
-
-func addParamsToURL(baseURL string, opt interface{}) (string, error) { //TODO: Move to helpers.go
-	url, err := url.Parse(baseURL)
-	if err != nil {
-		return baseURL, err
-	}
-
-	vs, err := query.Values(opt)
-	if err != nil {
-		return baseURL, err
-	}
-
-	url.RawQuery = vs.Encode()
-	return url.String(), nil
-}
-
-// func (h *Harvest) getURL(method string, url string) ([]byte, error) {
-// 	Client := &http.Client{}
-
-// 	req, _ := http.NewRequest("GET", url, nil)
-// 	req.Header.Set("User-Agent", "Harvest Slack Bot")
-// 	req.Header.Set("Harvest-Account-ID", h.API.AccountID)
-// 	req.Header.Set("Authorization", "Bearer "+h.API.AuthToken)
-// 	req.Header.Set("Content-Type", "application/json")
-
-// 	resp, err := Client.Do(req)
-// 	body, err := ioutil.ReadAll(resp.Body)
-// 	defer resp.Body.Close()
-
-// 	// var jsonResponse map[string]interface{}
-
-// 	// json.Unmarshal(body, &jsonResponse)
-
-// 	return body, err
-// }
-
-func (h *Harvest) getURL(method string, url string) ([]byte, error) { //TODO: Move to heplers.go
-	Client := &http.Client{}
-
-	req, _ := http.NewRequest("GET", url, nil)
-	req.Header.Set("User-Agent", "Harvest Slack Bot")
-	req.Header.Set("Harvest-Account-ID", h.API.AccountID)
-	req.Header.Set("Authorization", "Bearer "+h.API.AuthToken)
-	req.Header.Set("Content-Type", "application/json")
-
-	resp, err := Client.Do(req)
-	body, err := ioutil.ReadAll(resp.Body)
-	defer resp.Body.Close()
-
-	// var jsonResponse map[string]interface{}
-
-	// json.Unmarshal(body, &jsonResponse)
-
-	return body, err
-}
 
 // GetEntries fetches all the TimeEntries with the provided timespan.
 // If from and/or to dates are not defined, it will fetch all the TimeEntries.
