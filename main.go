@@ -10,6 +10,16 @@ import (
 // VERSION v0.0.2
 const VERSION = "v0.0.2"
 
+// Harvest API URLs
+const (
+	timeEntriesURL   string = "https://api.harvestapp.com/v2/time_entries"
+	timeEntryByIDURL string = "https://api.harvestapp.com/v2/time_entries/"
+	userMeURL        string = "https://api.harvestapp.com/v2/users/me"
+	usersURL         string = "https://api.harvestapp.com/v2/users"
+	userByIDURL      string = "https://api.harvestapp.com/v2/users/"
+	projectsURL      string = "https://api.harvestapp.com/v2/projects"
+)
+
 // Harvest creates the struct for the API, User and Entries
 type Harvest struct {
 	API         *structs.API

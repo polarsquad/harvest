@@ -19,9 +19,6 @@ import (
 // to: time.Time with format "2006-01-02"
 // u: User, specifies which users TimeEntries are fetched.
 func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries {
-	// Start with fetching the entries
-	url := "https://api.harvestapp.com/v2/time_entries"
-
 	// Let's build the URL with parameters.
 	params := GetTimeEntriesParams{
 		UserID:  int64(u.ID),
@@ -31,7 +28,7 @@ func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries 
 		To: to.Format("2006-01-02"),
 	}
 
-	urlWithParams, _ := addParamsToURL(url, &params)
+	urlWithParams, _ := addParamsToURL(timeEntriesURL, &params)
 	body, err := h.getURL("GET", urlWithParams)
 	if err != nil {
 		log.Fatalln(err.Error())
