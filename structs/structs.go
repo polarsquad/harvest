@@ -9,6 +9,11 @@ type API struct {
 	BaseURL   string
 }
 
+// UserList is list of all users
+type UserList struct {
+	Users []User `json:"users"`
+}
+
 // User is a object of a user fetched from REST API
 type User struct {
 	ID        int64  `json:"id"`

@@ -24,6 +24,7 @@ const (
 type Harvest struct {
 	API         *structs.API
 	User        *User
+	Users       *Users
 	Project     string
 	TimeEntries *TimeEntries
 }
@@ -41,6 +42,16 @@ type Entries []structs.Entries
 // User ...
 type User structs.User
 
+// type Users structs.UserList
+// Users ...
+type Users struct {
+	Users []User `json:"users"`
+}
+
+// type Users []User
+
+// type Users []structs.User
+
 // Links ...
 type Links structs.Links
 
@@ -56,6 +67,7 @@ type GetTimeEntriesParams struct {
 	PerPage int8 `url:"per_page"`
 }
 
+// API is something...
 type API structs.API
 
 // Init methot initializes the data structure needed for Harvest
@@ -66,10 +78,12 @@ func Init(conf *config.Config) *Harvest {
 	}
 
 	e := &TimeEntries{}
+	// u := &Users{}
 
 	H := &Harvest{
-		API:         a,
-		User:        &User{},
+		API:  a,
+		User: &User{},
+		// Users:       u,
 		Project:     "",
 		TimeEntries: e,
 	}
