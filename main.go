@@ -127,7 +127,7 @@ func Init(conf *config.Config) *Harvest {
 	// e := &TimeEntries{}
 	// u := &Users{}
 
-	H := &HarvestOLD{
+	H := &Harvest{
 		API:  a,
 		User: &User{},
 		// Users:       u,
