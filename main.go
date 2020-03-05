@@ -22,11 +22,21 @@ const (
 
 // Harvest creates the struct for the API, User and Entries
 type Harvest struct {
-	API         *structs.API
-	User        *User
-	Users       *Users
-	Project     string
-	TimeEntries *TimeEntries
+	// API  *structs.API
+	API  *API
+	User *User
+	// Users       *Users
+	// Project     string
+	// TimeEntries *TimeEntries
+}
+
+// HarvestOLD creates the struct for the API, User and Entries
+type HarvestOLD struct {
+	API  *structs.API
+	User *User
+	// Users       *Users
+	// Project     string
+	// TimeEntries *TimeEntries
 }
 
 // type api structs.API
@@ -70,22 +80,59 @@ type GetTimeEntriesParams struct {
 // API is something...
 type API structs.API
 
-// Init methot initializes the data structure needed for Harvest
-func Init(conf *config.Config) *Harvest {
-	a := &structs.API{
+// Config is ...
+type Config config.Config
+
+// InitHarvest methot initializes the data structure needed for Harvest
+func InitHarvest(conf *Config) *Harvest {
+	a := &API{
 		AuthToken: conf.API.AuthToken,
 		AccountID: conf.API.AccountID,
 	}
+	// a := &structs.API{
+	// 	AuthToken: conf.API.AuthToken,
+	// 	AccountID: conf.API.AccountID,
+	// }
 
-	e := &TimeEntries{}
+	// e := &TimeEntries{}
 	// u := &Users{}
 
 	H := &Harvest{
 		API:  a,
 		User: &User{},
 		// Users:       u,
-		Project:     "",
-		TimeEntries: e,
+		// Project:     "",
+		// TimeEntries: e,
+	}
+
+	// API.AccountID = conf.API.AccountID
+	// API.AuthToken = conf.API.AuthToken
+	// API.BaseURL = conf.API.BaseURL
+	// h := &Harvest{
+	// 	User:     "Mika",
+	// 	Projects: "Client",
+	// 	Entries:  []TimeEntries{},
+	// }
+
+	return H
+}
+
+// Init methot initializes the data structure needed for Harvest
+func Init(conf *config.Config) *HarvestOLD {
+	a := &structs.API{
+		AuthToken: conf.API.AuthToken,
+		AccountID: conf.API.AccountID,
+	}
+
+	// e := &TimeEntries{}
+	// u := &Users{}
+
+	H := &HarvestOLD{
+		API:  a,
+		User: &User{},
+		// Users:       u,
+		// Project:     "",
+		// TimeEntries: e,
 	}
 
 	// API.AccountID = conf.API.AccountID

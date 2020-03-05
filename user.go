@@ -54,13 +54,13 @@ func (h *Harvest) GetUser() (*User, error) {
 }
 
 // GetUserByEmail is ...
-func (h *Harvest) GetUserByEmail(email string) (User, error) {
+func (h *Harvest) GetUserByEmail(email string) (*User, error) {
 	var user User
 
 	body, err := h.getURL("GET", usersURL)
 	if err != nil {
 		log.Fatalf("[ERROR] Could not get users.")
-		return user, err
+		return &user, err
 	}
 
 	var usersList Users
@@ -69,10 +69,10 @@ func (h *Harvest) GetUserByEmail(email string) (User, error) {
 	for _, v := range usersList.Users {
 		if v.Email == email {
 			// user = v
-			return v, nil
+			return &v, nil
 		}
 	}
 
-	return user, fmt.Errorf("could not found user")
+	return &user, fmt.Errorf("could not found user")
 
 }

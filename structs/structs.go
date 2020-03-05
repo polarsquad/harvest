@@ -22,6 +22,7 @@ type User struct {
 	LastName  string `json:"last_name"`
 	IsActive  bool   `json:"is_active"`
 	IsAdmin   bool   `json:"is_admin"`
+	CreatedAt string `json:"created_at"`
 }
 
 // List of entries fetched from API

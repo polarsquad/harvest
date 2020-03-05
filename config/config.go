@@ -42,3 +42,19 @@ func LoadConfig(file string) *Config {
 
 	return c
 }
+
+// func LoadConfig(file string) *Config {
+// 	c := new(Config)
+
+// 	configFile, err := os.Open(file)
+// 	defer configFile.Close()
+// 	if err != nil {
+// 		log.Printf("OPEN FILE ERROR: %v\n", err.Error())
+// 		return c
+// 	}
+
+// 	confJSONParser := json.NewDecoder(configFile)
+// 	confJSONParser.Decode(&c)
+
+// 	return c
+// }

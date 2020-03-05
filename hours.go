@@ -1,9 +1,10 @@
 package harvest
 
 import (
-	"github.com/polarsquad/harvest/structs"
 	_ "log"
 	"time"
+
+	"github.com/polarsquad/harvest/structs"
 )
 
 // GetOvertime counts overtime hours from TimeEntries, using also dayTotal function as a helper.
@@ -32,9 +33,11 @@ func (e *TimeEntries) GetOvertime(from time.Time, to time.Time) (totalOvertime f
 }
 
 // TotalHours counts total logged hours from the TimeEntries struct
-func (h *Harvest) TotalHours() float64 {
+func (e *TimeEntries) TotalHours() float64 {
+	// func (h *Harvest) TotalHours() float64 {
 	var hours float64
-	for _, v := range h.TimeEntries.Entries {
+	// for _, v := range h.TimeEntries.Entries {
+	for _, v := range e.Entries {
 		hours = hours + v.Hours
 	}
 	// fmt.Printf("Total hours: %v\n", hours)
