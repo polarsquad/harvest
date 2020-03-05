@@ -119,7 +119,8 @@ func InitHarvest(conf *Config) *Harvest {
 
 // Init methot initializes the data structure needed for Harvest
 func Init(conf *config.Config) *Harvest {
-	a := &structs.API{
+	// a := &structs.API{
+	a := &API{
 		AuthToken: conf.API.AuthToken,
 		AccountID: conf.API.AccountID,
 	}
