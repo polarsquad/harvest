@@ -18,7 +18,7 @@ import (
 // from: time.Time with format "2006-01-02"
 // to: time.Time with format "2006-01-02"
 // u: User, specifies which users TimeEntries are fetched.
-func (h *Harvest) GetEntries(from time.Time, to time.Time, u User) *TimeEntries {
+func (h *Harvest) GetEntries(from time.Time, to time.Time, u *User) *TimeEntries {
 	// Let's build the URL with parameters.
 	params := GetTimeEntriesParams{
 		UserID:  int64(u.ID),
