@@ -1,0 +1,559 @@
+{
+    "total_entries": 21,
+    "total_pages": 1,
+    "links": {
+      "first": "https://api.harvestapp.com/v2/time_entries?from=2019-04-15&page=1&per_page=10&to=2019-04-28&user_id=1357902",
+      "last": "https://api.harvestapp.com/v2/time_entries?from=2019-04-15&page=2&per_page=10&to=2019-04-28&user_id=1357902",
+      "next": "https://api.harvestapp.com/v2/time_entries?from=2019-04-15&page=2&per_page=10&to=2019-04-28&user_id=1357902",
+      "previous": ""
+    },
+    "time_entries": [
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:53:40Z",
+        "hours": 7.5,
+        "id": 993733077,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-15",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:53:53Z",
+        "hours": 5.5,
+        "id": 993733335,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-16",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:54:01Z",
+        "hours": 9.5,
+        "id": 993733535,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-17",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:54:10Z",
+        "hours": 6.5,
+        "id": 993733711,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-18",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:54:10Z",
+        "hours": 1,
+        "id": 993733711,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-18",
+        "task": {
+          "id": 8814697,
+          "name": "Flexitime"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:56:26Z",
+        "hours": 7.5,
+        "id": 993734941,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Time off",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-19",
+        "task": {
+          "id": 8814697,
+          "name": "Flexitime"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:54:10Z",
+        "hours": 5.5,
+        "id": 993733711,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-20",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:54:10Z",
+        "hours": 4,
+        "id": 993733711,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-21",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-30T11:07:41Z",
+        "hours": 7.5,
+        "id": 993736074,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-22",
+        "task": {
+          "id": 8814665,
+          "name": "Public Holiday"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:56:40Z",
+        "hours": 2.5,
+        "id": 993737022,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-23",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:56:40Z",
+        "hours": 2,
+        "id": 993737022,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-23",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:56:40Z",
+        "hours": 3,
+        "id": 993737022,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-23",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-28T06:43:18Z",
+        "hours": 0.5,
+        "id": 993737193,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-24",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-28T06:43:18Z",
+        "hours": 1,
+        "id": 993737193,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-24",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-28T06:43:18Z",
+        "hours": 1,
+        "id": 993737193,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-24",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-28T06:43:18Z",
+        "hours": 2,
+        "id": 993737193,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-24",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-28T06:43:18Z",
+        "hours": 1.5,
+        "id": 993737193,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-24",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-28T06:43:18Z",
+        "hours": 1.5,
+        "id": 993737193,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-24",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": false,
+        "client": {
+          "id": 6226431,
+          "name": "Enterprise Oy Internal"
+        },
+        "updated_at": "2019-04-26T15:57:22Z",
+        "hours": 7.5,
+        "id": 993738212,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Serverless days",
+        "project": {
+          "id": 15642787,
+          "name": "Internal work"
+        },
+        "spent_date": "2019-04-25",
+        "task": {
+          "id": 9850785,
+          "name": "Internal Events"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": true,
+        "client": {
+          "id": 9135791,
+          "name": "Company Oy"
+        },
+        "updated_at": "2019-04-26T15:57:04Z",
+        "hours": 2,
+        "id": 993737510,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "Cloud platform development",
+        "project": {
+          "id": 19086150,
+          "name": "Cloud Ops"
+        },
+        "spent_date": "2019-04-25",
+        "task": {
+          "id": 8814727,
+          "name": "DevOps Consulting"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      },
+      {
+        "billable": false,
+        "client": {
+          "id": 6226431,
+          "name": "Enterprise Oy Internal"
+        },
+        "updated_at": "2019-04-26T15:57:54Z",
+        "hours": 7.5,
+        "id": 993738545,
+        "is_billed": false,
+        "is_closed": false,
+        "notes": "",
+        "project": {
+          "id": 15642787,
+          "name": "Internal work"
+        },
+        "spent_date": "2019-04-26",
+        "task": {
+          "id": 8814715,
+          "name": "Benching-it"
+        },
+        "user": {
+          "id": 1357902,
+          "name": "Joe Worker"
+        }
+      }
+    ],
+    "DailyTotal": null
+  }
