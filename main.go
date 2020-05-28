@@ -18,12 +18,18 @@ const (
 	usersURL         string = "https://api.harvestapp.com/v2/users"
 	userByIDURL      string = "https://api.harvestapp.com/v2/users/"
 	projectsURL      string = "https://api.harvestapp.com/v2/projects"
+	tasksURL         string = "https://api.harvestapp.com/v2/tasks"
+)
+
+var (
+	flexitimeIDs []int64
 )
 
 // Harvest creates the struct for the API, User and Entries
 type Harvest struct {
 	// API  *structs.API
 	API  *API
+	Env  *Env
 	User *User
 	// Users       *Users
 	// Project     string
@@ -80,6 +86,9 @@ type GetTimeEntriesParams struct {
 // API is something...
 type API structs.API
 
+// Env is something...
+type Env structs.Env
+
 // Config is ...
 type Config config.Config
 
@@ -88,6 +97,11 @@ func InitHarvest(conf *Config) *Harvest {
 	a := &API{
 		AuthToken: conf.API.AuthToken,
 		AccountID: conf.API.AccountID,
+	}
+
+	e := &Env{
+		DateFormatter: conf.Env.DateFormatter,
+		FlexitimeIDs:  conf.Env.FlexitimeIDs,
 	}
 	// a := &structs.API{
 	// 	AuthToken: conf.API.AuthToken,
@@ -100,6 +114,7 @@ func InitHarvest(conf *Config) *Harvest {
 	H := &Harvest{
 		API:  a,
 		User: &User{},
+		Env:  e,
 		// Users:       u,
 		// Project:     "",
 		// TimeEntries: e,
@@ -125,16 +140,23 @@ func Init(conf *config.Config) *Harvest {
 		AccountID: conf.API.AccountID,
 	}
 
+	e := &Env{
+		DateFormatter: conf.Env.DateFormatter,
+		FlexitimeIDs:  conf.Env.FlexitimeIDs,
+	}
 	// e := &TimeEntries{}
 	// u := &Users{}
 
 	H := &Harvest{
 		API:  a,
+		Env:  e,
 		User: &User{},
 		// Users:       u,
 		// Project:     "",
 		// TimeEntries: e,
 	}
+
+	flexitimeIDs = H.Env.FlexitimeIDs
 
 	// API.AccountID = conf.API.AccountID
 	// API.AuthToken = conf.API.AuthToken

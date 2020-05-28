@@ -9,6 +9,12 @@ type API struct {
 	BaseURL   string
 }
 
+// Env is...
+type Env struct {
+	DateFormatter string
+	FlexitimeIDs  []int64
+}
+
 // UserList is list of all users
 type UserList struct {
 	Users []User `json:"users"`

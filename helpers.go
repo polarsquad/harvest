@@ -38,3 +38,12 @@ func (h *Harvest) getURL(method string, url string) ([]byte, error) {
 
 	return body, err
 }
+
+func containsInt(intArray []int64, intSingle int64) bool {
+	for _, a := range intArray {
+		if a == intSingle {
+			return true
+		}
+	}
+	return false
+}

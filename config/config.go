@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 )
 
-// Config Has mainly API configurations, and maybe some global config values
+// Config structure groups the API and Env vars defined in the config file
 type Config struct {
 	API API `json:"api"`
 	Env Env `json:"env"`
@@ -23,7 +23,9 @@ type API struct {
 
 // Env has generic variables for configuration, eg. date formatter string, etc...
 type Env struct {
-	DateFormatter string `json:"date_formatter"`
+	DateFormatter string  `json:"date_formatter"`
+	FlexitimeIDs  []int64 `json:"flexitime_ids"`
+	// WorkingHours	int64 `json:"working_hours"` // TODO: Add daily working hours support to config
 }
 
 // LoadConfig loads the file and parses it to struct
